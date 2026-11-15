@@ -1,0 +1,39 @@
+I want to create an app for manipulating xml. This is going to replace an Excel spreadsheet that I use for this purpose so it is going to be a multifunction app.
+
+Loading the XML content:
+1. present a text box capable of holding many thousand lines of xml. I will normally paste the XML in to this box from my text editor.
+2. allow a file to be loaded in gpx, kml or fit format and immediately displayed in the text box. This will overwrite any existing content in the text box.
+3. the XML will normally use the GPX namespace but it will be useful to support other namespaces as well.
+4. I do not require an XML aware text box or any colouring of elements or attributes, simply a plain text box will do. I expect the app to understand the gpx file internally so that it can perform the required operations. I am keen to avoid third party libraries, if at all possible. 
+5. I will normally copy the XML from the text box and save it to a file using my text editor. I should also be able to save the modified file. 
+
+Here are some of the things I want to do with route and track gpx files:
+1. remove unwanted tags. Mainly those that are not essential for routes or tracks in gpx. These are sometimes created by third party apps. These include any extensions and time elements.
+2. convert from kml to gpx format.
+3. convert from fit to gpx format. These will be loaded as a file rather than pasted in to the text box. The conversion should produce a gpx file that is ready to use.
+4. convert from tracks to routes and vice versa. If converting from track to route include the option to simplify the track and remove points that are not essential using the Douglas-Peucker algorithm. Use the default tolerance of the algorithm. 
+5. if a track has multiple <trkseg> elements, join them together.
+6. add names to trkpt and rtept elements named WPnnnn where there is no name element. WP0001, WP0002 etc. (where nnnn is the zero-padded number of the point in the track or route). Replace any existing names entirely.
+7. rename and renumber existing name elements inside trkpt and rtept elements so that they are sequential. Remove any gaps or duplication in the numbering. Replace any existing names entirely.
+8. reverse routes or tracks so that they go the other way
+9. remove points from a route or track by sepecifying a range (e.g. 5-10 remove points 5 through 10) or by simply specifying the start point or end point and removing all the others. Do not renumber until the user explicitly requests it.
+10. reformat the xml with indentation using spaces not tabs. Each indentation level will be 2 spaces.
+11. All of these functions should be user initiated through the UI and not happen automatically. "Applying" the change should reformat the XML and update the display in the text box.
+12. Add a copy button to copy the xml in the text box to the clipboard. This button should be available on the default screen.
+
+I want a separate tab/page that allows me to work with waypoints:
+1. Add text boxes for 
+1.1 combined latitude longitude (e.g. 53.63387, -2.80885)
+1.2 latitude
+1.3 longitude
+1.4 name
+1.5 symbol (drop down list)
+1.6 type (drop down list)
+1.7 description.
+1.8 gpx track or route point.
+2. A button to create a gpx waypoint element with this information.
+3. a copy button to copy the waypoint to the cliboard.
+4. a button to copy the waypoint to beginning of the loaded track or route in the main tab.
+
+If I enter combined latitude longitude the latitude and longitude boxes should be populated.
+If I enter a gpx track or route point then the combined latitude longitude, latitude and longitude boxes should be populated.

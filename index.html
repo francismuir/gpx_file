@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPX Route, Track &amp; Waypoint Utility</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-brand">
+      <h1>GPX Utility</h1>
+      <span class="header-subtitle">Route, Track &amp; Waypoint XML Editor</span>
+    </div>
+
+    <nav class="tab-nav" role="tablist" aria-label="Main sections">
+      <button
+        type="button"
+        id="tab-btn-main"
+        class="tab-btn active"
+        role="tab"
+        aria-selected="true"
+        aria-controls="tab-main"
+      >
+        Route &amp; Track XML
+      </button>
+      <button
+        type="button"
+        id="tab-btn-waypoints"
+        class="tab-btn"
+        role="tab"
+        aria-selected="false"
+        aria-controls="tab-waypoints"
+      >
+        Waypoints
+      </button>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <!-- TAB 1: ROUTE & TRACK XML EDITOR -->
+    <section id="tab-main" class="tab-panel active" role="tabpanel" aria-labelledby="tab-btn-main">
+      <!-- Top Action Bar -->
+      <div class="toolbar">
+        <div class="toolbar-group">
+          <input type="file" id="file-input" accept=".gpx,.kml,.fit,.xml" hidden>
+          <input type="file" id="fit-input" accept=".fit" hidden>
+          <button type="button" id="btn-open-file" class="btn btn-secondary" title="Open GPX, KML, FIT, or XML file">
+            Open File (GPX / KML / FIT)
+          </button>
+          <button type="button" id="btn-load-fit" class="btn btn-secondary" title="Load and convert a binary Garmin .fit file to GPX">
+            Load &amp; Convert FIT
+          </button>
+          <button type="button" id="btn-save-file" class="btn btn-secondary" title="Save XML as a .gpx file">
+            Save .gpx
+          </button>
+        </div>
+
+        <div class="toolbar-group">
+          <button type="button" id="btn-undo" class="btn btn-ghost" disabled title="Undo last change">
+            Undo
+          </button>
+          <button type="button" id="btn-redo" class="btn btn-ghost" disabled title="Redo change">
+            Redo
+          </button>
+          <button type="button" id="btn-sample" class="btn btn-ghost" title="Load a sample GPX file to test features">
+            Load Sample
+          </button>
+          <button type="button" id="btn-clear" class="btn btn-ghost btn-danger-text" title="Clear the XML text box">
+            Clear
+          </button>
+        </div>
+
+        <div class="toolbar-group toolbar-group-right">
+          <button type="button" id="btn-copy-xml" class="btn btn-primary" title="Copy the XML in the text box to the clipboard">
+            Copy XML to Clipboard
+          </button>
+        </div>
+      </div>
+
+      <!-- Workspace Split: Operations Panel + XML Editor -->
+      <div class="workspace-grid">
+        <aside class="ops-panel" aria-label="XML operations">
+          <!-- 1. Cleanup & Formatting -->
+          <div class="op-card">
+            <h2 class="op-title">1. Clean &amp; Format XML</h2>
+            <div class="checkbox-list">
+              <label class="checkbox-row">
+                <input type="checkbox" id="chk-remove-extensions" checked>
+                <span>Remove <code>&lt;extensions&gt;</code> &amp; 3rd-party namespaces</span>
+              </label>
+              <label class="checkbox-row">
+                <input type="checkbox" id="chk-remove-time" checked>
+                <span>Remove <code>&lt;time&gt;</code> tags</span>
+              </label>
+              <label class="checkbox-row">
+                <input type="checkbox" id="chk-remove-nonessential" checked>
+                <span>Remove non-essential tags (<code>&lt;cmt&gt;</code>, <code>&lt;src&gt;</code>, <code>&lt;link&gt;</code>, <code>&lt;fix&gt;</code>, <code>&lt;hdop&gt;</code>...)</span>
+              </label>
+              <label class="checkbox-row">
+                <input type="checkbox" id="chk-remove-metadata" checked>
+                <span>Remove <code>&lt;metadata&gt;</code></span>
+              </label>
+              <label class="checkbox-row">
+                <input type="checkbox" id="chk-remove-ele">
+                <span>Remove <code>&lt;ele&gt;</code> (elevation)</span>
+              </label>
+            </div>
+            <div class="op-actions">
+              <button type="button" id="btn-clean-tags" class="btn btn-secondary btn-full">
+                Remove Unwanted Tags
+              </button>
+              <button type="button" id="btn-format-xml" class="btn btn-ghost btn-full">
+                Reformat XML (2 Spaces)
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Convert Format & Structure -->
+          <div class="op-card">
+            <h2 class="op-title">2. Convert &amp; Merge</h2>
+            <div class="op-actions">
+              <button type="button" id="btn-kml-to-gpx" class="btn btn-secondary btn-full">
+                Convert KML &rarr; GPX
+              </button>
+              <button type="button" id="btn-join-segments" class="btn btn-secondary btn-full">
+                Join Multiple <code>&lt;trkseg&gt;</code>
+              </button>
+            </div>
+            <div class="op-divider"></div>
+            <label class="checkbox-row">
+              <input type="checkbox" id="chk-simplify-dp">
+              <span>Simplify Track &rarr; Route (Douglas-Peucker, 10m default)</span>
+            </label>
+            <div class="op-btn-pair">
+              <button type="button" id="btn-trk-to-rte" class="btn btn-secondary">
+                Track &rarr; Route
+              </button>
+              <button type="button" id="btn-rte-to-trk" class="btn btn-secondary">
+                Route &rarr; Track
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Point Naming & Direction -->
+          <div class="op-card">
+            <h2 class="op-title">3. Point Names &amp; Direction</h2>
+            <p class="op-hint">Names every <code>&lt;trkpt&gt;</code> / <code>&lt;rtept&gt;</code> sequentially as <code>WP0001</code>, <code>WP0002</code>&hellip; replacing existing point names.</p>
+            <div class="op-actions">
+              <button type="button" id="btn-update-wp-names" class="btn btn-secondary btn-full">
+                Update <code>WPnnnn</code> Names
+              </button>
+              <button type="button" id="btn-reverse" class="btn btn-secondary btn-full">
+                Reverse Track / Route
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Remove Points -->
+          <div class="op-card">
+            <h2 class="op-title">4. Remove Points</h2>
+            <p class="op-hint">Does not renumber remaining points until you explicitly renumber them above.</p>
+
+            <div class="field-group">
+              <label for="remove-match-mode" class="field-label">Match numbers by</label>
+              <select id="remove-match-mode" class="input-control">
+                <option value="auto">WPnnnn name (if present), else position (1..N)</option>
+                <option value="position">Position index (1..N)</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="remove-range-input" class="field-label">Delete range (e.g. 5-10 or 5-10, 20)</label>
+              <div class="inline-row">
+                <input type="text" id="remove-range-input" class="input-control" placeholder="e.g. 5-10">
+                <button type="button" id="btn-remove-range" class="btn btn-secondary">Remove</button>
+              </div>
+            </div>
+
+            <div class="op-divider"></div>
+
+            <div class="field-group">
+              <span class="field-label">Keep only from Start and/or End point</span>
+              <div class="inline-row">
+                <input type="text" id="trim-start-input" class="input-control" placeholder="Start (e.g. 12)" aria-label="New start point">
+                <input type="text" id="trim-end-input" class="input-control" placeholder="End (e.g. 240)" aria-label="New end point">
+              </div>
+              <button type="button" id="btn-trim-points" class="btn btn-secondary btn-full">
+                Trim Outside Start / End
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Editor Area -->
+        <div class="editor-pane">
+          <!-- Stats Bar -->
+          <div id="stats-bar" class="stats-bar" aria-live="polite">
+            <span class="stat-pill" id="stat-format">Empty</span>
+            <span class="stat-pill" id="stat-structure">0 tracks &bull; 0 routes</span>
+            <span class="stat-pill" id="stat-points">0 points &bull; 0 wpt</span>
+            <span class="stat-pill" id="stat-distance">0.00 km (0.00 mi)</span>
+            <span class="stat-pill" id="stat-elevation">Ele: &mdash;</span>
+            <span class="stat-pill" id="stat-lines">0 lines</span>
+          </div>
+
+          <!-- Feedback / Error Banner -->
+          <div id="status-banner" class="status-banner hidden" role="status" aria-live="polite"></div>
+
+          <!-- Editor Dropzone & Plain Textbox -->
+          <div id="editor-dropzone" class="editor-dropzone">
+            <div class="editor-subheader">
+              <span class="editor-hint">Paste XML below, or drag &amp; drop a <code>.gpx</code>, <code>.kml</code>, or <code>.fit</code> file here.</span>
+              <label class="wrap-toggle">
+                <input type="checkbox" id="chk-wrap">
+                <span>Wrap lines</span>
+              </label>
+            </div>
+            <textarea
+              id="xml-editor"
+              class="xml-editor"
+              spellcheck="false"
+              wrap="off"
+              aria-label="XML Editor"
+              placeholder="Paste GPX or KML XML here, or use Open File / Drag &amp; Drop for .gpx, .kml, or .fit files..."
+            ></textarea>
+            <div id="drop-overlay" class="drop-overlay hidden">
+              <div class="drop-overlay-box">Drop .gpx, .kml, or .fit file to load</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: WAYPOINTS BUILDER -->
+    <section id="tab-waypoints" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-btn-waypoints">
+      <div class="wpt-layout">
+        <!-- Left Form -->
+        <div class="wpt-card">
+          <div class="wpt-card-header">
+            <h2>Waypoint Details</h2>
+            <button type="button" id="btn-wpt-clear" class="btn btn-ghost">Clear Form</button>
+          </div>
+
+          <div class="wpt-form">
+            <div class="field-group">
+              <label for="wpt-combined" class="field-label">1.1 Combined Latitude, Longitude</label>
+              <input
+                type="text"
+                id="wpt-combined"
+                class="input-control"
+                placeholder="e.g. 53.63387, -2.80885"
+              >
+            </div>
+
+            <div class="field-row-2">
+              <div class="field-group">
+                <label for="wpt-lat" class="field-label">1.2 Latitude</label>
+                <input
+                  type="text"
+                  id="wpt-lat"
+                  class="input-control"
+                  placeholder="e.g. 53.63387"
+                >
+              </div>
+              <div class="field-group">
+                <label for="wpt-lon" class="field-label">1.3 Longitude</label>
+                <input
+                  type="text"
+                  id="wpt-lon"
+                  class="input-control"
+                  placeholder="e.g. -2.80885"
+                >
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="wpt-name" class="field-label">1.4 Name</label>
+              <input
+                type="text"
+                id="wpt-name"
+                class="input-control"
+                placeholder="e.g. Trailhead Parking"
+              >
+            </div>
+
+            <div class="field-row-2">
+              <div class="field-group">
+                <label for="wpt-sym" class="field-label">1.5 Symbol (Garmin GPX)</label>
+                <select id="wpt-sym" class="input-control">
+                  <option value="">(None)</option>
+                  <option value="Waypoint">Waypoint</option>
+                  <option value="Flag, Blue">Flag, Blue</option>
+                  <option value="Flag, Red">Flag, Red</option>
+                  <option value="Flag, Green">Flag, Green</option>
+                  <option value="Pin, Blue">Pin, Blue</option>
+                  <option value="Pin, Red">Pin, Red</option>
+                  <option value="Pin, Green">Pin, Green</option>
+                  <option value="Summit">Summit</option>
+                  <option value="Parking Area">Parking Area</option>
+                  <option value="Trail Head">Trail Head</option>
+                  <option value="Campground">Campground</option>
+                  <option value="Drinking Water">Drinking Water</option>
+                  <option value="Restroom">Restroom</option>
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Bar">Bar</option>
+                  <option value="Fast Food">Fast Food</option>
+                  <option value="Convenience Store">Convenience Store</option>
+                  <option value="Lodging">Lodging</option>
+                  <option value="Residence">Residence</option>
+                  <option value="Information">Information</option>
+                  <option value="Scenic Area">Scenic Area</option>
+                  <option value="Picnic Area">Picnic Area</option>
+                  <option value="Danger Area">Danger Area</option>
+                  <option value="Crossing">Crossing</option>
+                  <option value="Bridge">Bridge</option>
+                  <option value="Tunnel">Tunnel</option>
+                  <option value="Bike Trail">Bike Trail</option>
+                  <option value="Geocache">Geocache</option>
+                  <option value="First Aid">First Aid</option>
+                  <option value="Telephone">Telephone</option>
+                </select>
+              </div>
+
+              <div class="field-group">
+                <label for="wpt-type" class="field-label">1.6 Type</label>
+                <select id="wpt-type" class="input-control">
+                  <option value="">(None)</option>
+                  <option value="Waypoint">Waypoint</option>
+                  <option value="POI">POI</option>
+                  <option value="Summit">Summit</option>
+                  <option value="Parking">Parking</option>
+                  <option value="Water">Water</option>
+                  <option value="Food">Food</option>
+                  <option value="Refreshment">Refreshment</option>
+                  <option value="Caution">Caution</option>
+                  <option value="Turn">Turn</option>
+                  <option value="Control">Control</option>
+                  <option value="Start">Start</option>
+                  <option value="Finish">Finish</option>
+                  <option value="Camp">Camp</option>
+                  <option value="Viewpoint">Viewpoint</option>
+                  <option value="Junction">Junction</option>
+                  <option value="Resupply">Resupply</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="wpt-desc" class="field-label">1.7 Description</label>
+              <textarea
+                id="wpt-desc"
+                class="input-control"
+                rows="2"
+                placeholder="Optional description"
+              ></textarea>
+            </div>
+
+            <div class="field-group">
+              <label for="wpt-source-pt" class="field-label">1.8 GPX Track or Route Point (<code>&lt;trkpt&gt;</code> or <code>&lt;rtept&gt;</code>)</label>
+              <textarea
+                id="wpt-source-pt"
+                class="input-control input-mono"
+                rows="4"
+                spellcheck="false"
+                placeholder='Paste e.g. <trkpt lat="53.63387" lon="-2.80885"><ele>142</ele></trkpt> to populate coordinates'
+              ></textarea>
+              <div class="wpt-source-meta">
+                <label class="checkbox-row">
+                  <input type="checkbox" id="chk-wpt-keep-ele" checked>
+                  <span>Include <code>&lt;ele&gt;</code> from pasted point (if present)</span>
+                </label>
+                <span id="wpt-detected-ele" class="detected-ele hidden"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Output & Actions -->
+        <div class="wpt-card">
+          <div class="wpt-card-header">
+            <h2>Generated GPX Waypoint</h2>
+          </div>
+
+          <div class="wpt-actions">
+            <button type="button" id="btn-wpt-create" class="btn btn-primary">
+              Create GPX Waypoint
+            </button>
+            <button type="button" id="btn-wpt-copy" class="btn btn-secondary">
+              Copy Waypoint to Clipboard
+            </button>
+            <button type="button" id="btn-wpt-insert" class="btn btn-secondary">
+              Add Waypoint to Main GPX
+            </button>
+          </div>
+          <p class="op-hint">
+            Adding to the Main GPX inserts the <code>&lt;wpt&gt;</code> directly below the <code>&lt;gpx ...&gt;</code> declaration at the top of the file.
+          </p>
+
+          <div id="wpt-status" class="status-banner hidden" role="status" aria-live="polite"></div>
+
+          <div class="field-group wpt-output-group">
+            <label for="wpt-output" class="field-label">Waypoint XML Preview (2-space indented)</label>
+            <textarea
+              id="wpt-output"
+              class="xml-editor wpt-output"
+              readonly
+              spellcheck="false"
+              placeholder='Click "Create GPX Waypoint" to generate <wpt lat="..." lon="...">...</wpt>'
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
