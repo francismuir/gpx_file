@@ -690,7 +690,71 @@
     };
   }
 
-  function convertTracksToRoutes(doc, simplify) {
+  function simplifyTracksAndRoutes(doc, toleranceMeters) {
+    ensureGpxRoot(doc);
+    const root = doc.documentElement;
+    const trks = getElementsByLocalName(root, 'trk');
+    const rtes = getElementsByLocalName(root, 'rte');
+    if (trks.length === 0 && rtes.length === 0) {
+      throw new Error('No <trk> or <rte> elements found to simplify.');
+    }
+
+    const tol = typeof toleranceMeters === 'number' && toleranceMeters > 0 ? toleranceMeters : 10;
+    let totalBefore = 0;
+    let totalAfter = 0;
+
+    function simplifyPointSequence(ptElements) {
+      const pts = [];
+      for (let i = 0; i < ptElements.length; i += 1) {
+        const ptEl = ptElements[i];
+        const lat = parseFloat(ptEl.getAttribute('lat'));
+        const lon = parseFloat(ptEl.getAttribute('lon'));
+        if (Number.isFinite(lat) && Number.isFinite(lon)) {
+          pts.push({ lat, lon, el: ptEl });
+        }
+      }
+      totalBefore += pts.length;
+      if (pts.length <= 2) {
+        totalAfter += pts.length;
+        return;
+      }
+      const kept = simplifyPointsDP(pts, tol);
+      const keptSet = new Set(
+        kept.map(function (item) {
+          return item.el;
+        })
+      );
+      totalAfter += kept.length;
+      for (let i = 0; i < pts.length; i += 1) {
+        if (!keptSet.has(pts[i].el) && pts[i].el.parentNode) {
+          pts[i].el.parentNode.removeChild(pts[i].el);
+        }
+      }
+    }
+
+    for (let i = 0; i < trks.length; i += 1) {
+      const segs = getDirectChildren(trks[i], 'trkseg');
+      for (let s = 0; s < segs.length; s += 1) {
+        simplifyPointSequence(getDirectChildren(segs[s], 'trkpt'));
+      }
+    }
+    for (let i = 0; i < rtes.length; i += 1) {
+      simplifyPointSequence(getDirectChildren(rtes[i], 'rtept'));
+    }
+
+    if (totalBefore === 0) {
+      throw new Error('No <trkpt> or <rtept> points found to simplify.');
+    }
+
+    return {
+      xml: formatXml(doc),
+      totalBefore,
+      totalAfter,
+      removedCount: totalBefore - totalAfter
+    };
+  }
+
+  function convertTracksToRoutes(doc) {
     ensureGpxRoot(doc);
     const trks = getElementsByLocalName(doc.documentElement, 'trk');
     if (trks.length === 0) {
@@ -725,13 +789,10 @@
       }
 
       totalBefore += collectedPts.length;
-      const keptPts = simplify && collectedPts.length > 2
-        ? simplifyPointsDP(collectedPts, 10)
-        : collectedPts;
-      totalAfter += keptPts.length;
+      totalAfter += collectedPts.length;
 
-      for (let p = 0; p < keptPts.length; p += 1) {
-        const srcPt = keptPts[p].el;
+      for (let p = 0; p < collectedPts.length; p += 1) {
+        const srcPt = collectedPts[p].el;
         const rtept = createGpxElement(doc, 'rtept');
         for (let a = 0; a < srcPt.attributes.length; a += 1) {
           const attr = srcPt.attributes[a];
@@ -1748,9 +1809,9 @@
 
     const btnKmlToGpx = document.getElementById('btn-kml-to-gpx');
     const btnJoinSegments = document.getElementById('btn-join-segments');
-    const chkSimplifyDp = document.getElementById('chk-simplify-dp');
     const btnTrkToRte = document.getElementById('btn-trk-to-rte');
     const btnRteToTrk = document.getElementById('btn-rte-to-trk');
+    const btnSimplifyDp = document.getElementById('btn-simplify-dp');
 
     const btnUpdateWpNames = document.getElementById('btn-update-wp-names');
     const btnReverse = document.getElementById('btn-reverse');
@@ -2184,23 +2245,15 @@
 
     btnTrkToRte.addEventListener('click', function () {
       runTransform(function (doc) {
-        const simplify = chkSimplifyDp.checked;
-        const res = convertTracksToRoutes(doc, simplify);
+        const res = convertTracksToRoutes(doc);
         return {
           xml: res.xml,
-          message: simplify
-            ? 'Converted ' +
-              res.convertedCount +
-              ' track(s) to route(s) and simplified ' +
-              res.totalBefore.toLocaleString() +
-              ' → ' +
-              res.totalAfter.toLocaleString() +
-              ' points.'
-            : 'Converted ' +
-              res.convertedCount +
-              ' track(s) to route(s) (' +
-              res.totalAfter.toLocaleString() +
-              ' points).'
+          message:
+            'Converted ' +
+            res.convertedCount +
+            ' track(s) to route(s) (' +
+            res.totalAfter.toLocaleString() +
+            ' points).'
         };
       });
     });
@@ -2278,6 +2331,23 @@
             ' point(s) (' +
             res.remaining.toLocaleString() +
             ' remaining; not renumbered).'
+        };
+      });
+    });
+
+    btnSimplifyDp.addEventListener('click', function () {
+      runTransform(function (doc) {
+        const res = simplifyTracksAndRoutes(doc, 10);
+        return {
+          xml: res.xml,
+          message:
+            'Simplified ' +
+            res.totalBefore.toLocaleString() +
+            ' → ' +
+            res.totalAfter.toLocaleString() +
+            ' point(s) (removed ' +
+            res.removedCount.toLocaleString() +
+            ').'
         };
       });
     });
@@ -2423,6 +2493,7 @@
       formatXml,
       computeStats,
       simplifyPointsDP,
+      simplifyTracksAndRoutes,
       removeUnwantedTags,
       joinTrackSegments,
       convertTracksToRoutes,
