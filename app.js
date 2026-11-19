@@ -68,6 +68,1116 @@
     23: 'U-Turn'
   };
 
+  const SAMPLE_GPX_XML = `<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="GPX Builder" xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">
+  <metadata>
+    <name>Cycle on the Moss</name>
+    <desc>Distance: 53.00 km | Elevation Gain: +203m | Elevation Loss: -203m</desc>
+    <time>2026-11-18T15:10:34.125Z</time>
+  </metadata>
+  <trk>
+    <name>Cycle on the Moss</name>
+    <trkseg>
+      <trkpt lat="53.476745" lon="-3.024770">
+        <ele>14.0</ele>
+        <name>WP0001</name>
+      </trkpt>
+      <trkpt lat="53.475890" lon="-3.023708">
+        <ele>13.0</ele>
+        <name>WP0002</name>
+      </trkpt>
+      <trkpt lat="53.473048" lon="-3.030038">
+        <ele>7.0</ele>
+        <name>WP0003</name>
+      </trkpt>
+      <trkpt lat="53.476151" lon="-3.034544">
+        <ele>11.0</ele>
+        <name>WP0004</name>
+      </trkpt>
+      <trkpt lat="53.477313" lon="-3.036851">
+        <ele>7.0</ele>
+        <name>WP0005</name>
+      </trkpt>
+      <trkpt lat="53.477141" lon="-3.037194">
+        <ele>7.0</ele>
+        <name>WP0006</name>
+      </trkpt>
+      <trkpt lat="53.477192" lon="-3.037602">
+        <ele>6.0</ele>
+        <name>WP0007</name>
+      </trkpt>
+      <trkpt lat="53.477831" lon="-3.038664">
+        <ele>9.0</ele>
+        <name>WP0008</name>
+      </trkpt>
+      <trkpt lat="53.479957" lon="-3.041604">
+        <ele>7.0</ele>
+        <name>WP0009</name>
+      </trkpt>
+      <trkpt lat="53.480353" lon="-3.042537">
+        <ele>7.0</ele>
+        <name>WP0010</name>
+      </trkpt>
+      <trkpt lat="53.481744" lon="-3.044082">
+        <ele>9.0</ele>
+        <name>WP0011</name>
+      </trkpt>
+      <trkpt lat="53.481438" lon="-3.045058">
+        <ele>7.0</ele>
+        <name>WP0012</name>
+      </trkpt>
+      <trkpt lat="53.481872" lon="-3.045809">
+        <ele>7.0</ele>
+        <name>WP0013</name>
+      </trkpt>
+      <trkpt lat="53.482211" lon="-3.045756">
+        <ele>7.0</ele>
+        <name>WP0014</name>
+      </trkpt>
+      <trkpt lat="53.482855" lon="-3.044297">
+        <ele>9.0</ele>
+        <name>WP0015</name>
+      </trkpt>
+      <trkpt lat="53.484854" lon="-3.046474">
+        <ele>9.0</ele>
+        <name>WP0016</name>
+      </trkpt>
+      <trkpt lat="53.484981" lon="-3.046228">
+        <ele>9.0</ele>
+        <name>WP0017</name>
+      </trkpt>
+      <trkpt lat="53.489361" lon="-3.051420">
+        <ele>9.0</ele>
+        <name>WP0018</name>
+      </trkpt>
+      <trkpt lat="53.489858" lon="-3.052568">
+        <ele>8.0</ele>
+        <name>WP0019</name>
+      </trkpt>
+      <trkpt lat="53.490669" lon="-3.053641">
+        <ele>8.0</ele>
+        <name>WP0020</name>
+      </trkpt>
+      <trkpt lat="53.491550" lon="-3.054199">
+        <ele>8.0</ele>
+        <name>WP0021</name>
+      </trkpt>
+      <trkpt lat="53.492278" lon="-3.054188">
+        <ele>8.0</ele>
+        <name>WP0022</name>
+      </trkpt>
+      <trkpt lat="53.496637" lon="-3.056989">
+        <ele>9.0</ele>
+        <name>WP0023</name>
+      </trkpt>
+      <trkpt lat="53.496745" lon="-3.057654">
+        <ele>6.0</ele>
+        <name>WP0024</name>
+      </trkpt>
+      <trkpt lat="53.496669" lon="-3.058394">
+        <ele>6.0</ele>
+        <name>WP0025</name>
+      </trkpt>
+      <trkpt lat="53.497613" lon="-3.058748">
+        <ele>7.0</ele>
+        <name>WP0026</name>
+      </trkpt>
+      <trkpt lat="53.497933" lon="-3.058609">
+        <ele>7.0</ele>
+        <name>WP0027</name>
+      </trkpt>
+      <trkpt lat="53.499694" lon="-3.059371">
+        <ele>5.0</ele>
+        <name>WP0028</name>
+      </trkpt>
+      <trkpt lat="53.500115" lon="-3.059886">
+        <ele>7.0</ele>
+        <name>WP0029</name>
+      </trkpt>
+      <trkpt lat="53.506458" lon="-3.062214">
+        <ele>5.0</ele>
+        <name>WP0030</name>
+      </trkpt>
+      <trkpt lat="53.507281" lon="-3.061870">
+        <ele>3.0</ele>
+        <name>WP0031</name>
+      </trkpt>
+      <trkpt lat="53.508321" lon="-3.061924">
+        <ele>4.0</ele>
+        <name>WP0032</name>
+      </trkpt>
+      <trkpt lat="53.509891" lon="-3.062375">
+        <ele>7.0</ele>
+        <name>WP0033</name>
+      </trkpt>
+      <trkpt lat="53.510937" lon="-3.062278">
+        <ele>8.0</ele>
+        <name>WP0034</name>
+      </trkpt>
+      <trkpt lat="53.512232" lon="-3.062890">
+        <ele>3.0</ele>
+        <name>WP0035</name>
+      </trkpt>
+      <trkpt lat="53.512660" lon="-3.062160">
+        <ele>7.0</ele>
+        <name>WP0036</name>
+      </trkpt>
+      <trkpt lat="53.512379" lon="-3.060282">
+        <ele>8.0</ele>
+        <name>WP0037</name>
+      </trkpt>
+      <trkpt lat="53.512475" lon="-3.058534">
+        <ele>8.0</ele>
+        <name>WP0038</name>
+      </trkpt>
+      <trkpt lat="53.513081" lon="-3.058813">
+        <ele>7.0</ele>
+        <name>WP0039</name>
+      </trkpt>
+      <trkpt lat="53.514165" lon="-3.058791">
+        <ele>8.0</ele>
+        <name>WP0040</name>
+      </trkpt>
+      <trkpt lat="53.514523" lon="-3.058223">
+        <ele>8.0</ele>
+        <name>WP0041</name>
+      </trkpt>
+      <trkpt lat="53.515594" lon="-3.057632">
+        <ele>8.0</ele>
+        <name>WP0042</name>
+      </trkpt>
+      <trkpt lat="53.519173" lon="-3.057311">
+        <ele>9.0</ele>
+        <name>WP0043</name>
+      </trkpt>
+      <trkpt lat="53.519945" lon="-3.056999">
+        <ele>9.0</ele>
+        <name>WP0044</name>
+      </trkpt>
+      <trkpt lat="53.520621" lon="-3.056989">
+        <ele>8.0</ele>
+        <name>WP0045</name>
+      </trkpt>
+      <trkpt lat="53.521195" lon="-3.057193">
+        <ele>9.0</ele>
+        <name>WP0046</name>
+      </trkpt>
+      <trkpt lat="53.521450" lon="-3.057740">
+        <ele>10.0</ele>
+        <name>WP0047</name>
+      </trkpt>
+      <trkpt lat="53.523211" lon="-3.058137">
+        <ele>8.0</ele>
+        <name>WP0048</name>
+      </trkpt>
+      <trkpt lat="53.523759" lon="-3.057965">
+        <ele>9.0</ele>
+        <name>WP0049</name>
+      </trkpt>
+      <trkpt lat="53.524786" lon="-3.058201">
+        <ele>8.6</ele>
+        <name>WP0050</name>
+      </trkpt>
+      <trkpt lat="53.524856" lon="-3.057429">
+        <ele>9.0</ele>
+        <name>WP0051</name>
+      </trkpt>
+      <trkpt lat="53.525685" lon="-3.057536">
+        <ele>7.0</ele>
+        <name>WP0052</name>
+      </trkpt>
+      <trkpt lat="53.528313" lon="-3.058469">
+        <ele>7.0</ele>
+        <name>WP0053</name>
+      </trkpt>
+      <trkpt lat="53.532286" lon="-3.060540">
+        <ele>4.0</ele>
+        <name>WP0054</name>
+      </trkpt>
+      <trkpt lat="53.543584" lon="-3.067009">
+        <ele>5.0</ele>
+        <name>WP0055</name>
+      </trkpt>
+      <trkpt lat="53.544082" lon="-3.067632">
+        <ele>3.0</ele>
+        <name>WP0056</name>
+      </trkpt>
+      <trkpt lat="53.543533" lon="-3.068812">
+        <ele>3.0</ele>
+        <name>WP0057</name>
+      </trkpt>
+      <trkpt lat="53.543597" lon="-3.069499">
+        <ele>3.0</ele>
+        <name>WP0058</name>
+      </trkpt>
+      <trkpt lat="53.545444" lon="-3.071098">
+        <ele>30.4</ele>
+        <name>WP0059</name>
+      </trkpt>
+      <trkpt lat="53.547420" lon="-3.070994">
+        <ele>32.0</ele>
+        <name>WP0060</name>
+      </trkpt>
+      <trkpt lat="53.549852" lon="-3.071401">
+        <ele>32.8</ele>
+        <name>WP0061</name>
+      </trkpt>
+      <trkpt lat="53.550881" lon="-3.071163">
+        <ele>34.4</ele>
+        <name>WP0062</name>
+      </trkpt>
+      <trkpt lat="53.551259" lon="-3.071014">
+        <ele>34.8</ele>
+        <name>WP0063</name>
+      </trkpt>
+      <trkpt lat="53.551283" lon="-3.070017">
+        <ele>34.0</ele>
+        <name>WP0064</name>
+      </trkpt>
+      <trkpt lat="53.553128" lon="-3.070114">
+        <ele>34.4</ele>
+        <name>WP0065</name>
+      </trkpt>
+      <trkpt lat="53.553235" lon="-3.068994">
+        <ele>34.4</ele>
+        <name>WP0066</name>
+      </trkpt>
+      <trkpt lat="53.553434" lon="-3.068514">
+        <ele>34.2</ele>
+        <name>WP0067</name>
+      </trkpt>
+      <trkpt lat="53.553796" lon="-3.068224">
+        <ele>34.4</ele>
+        <name>WP0068</name>
+      </trkpt>
+      <trkpt lat="53.554475" lon="-3.068557">
+        <ele>34.8</ele>
+        <name>WP0069</name>
+      </trkpt>
+      <trkpt lat="53.554570" lon="-3.069472">
+        <ele>35.0</ele>
+        <name>WP0070</name>
+      </trkpt>
+      <trkpt lat="53.556035" lon="-3.070252">
+        <ele>35.0</ele>
+        <name>WP0071</name>
+      </trkpt>
+      <trkpt lat="53.554576" lon="-3.069472">
+        <ele>31.2</ele>
+        <name>WP0072</name>
+      </trkpt>
+      <trkpt lat="53.554619" lon="-3.068287">
+        <ele>31.4</ele>
+        <name>WP0073</name>
+      </trkpt>
+      <trkpt lat="53.556043" lon="-3.064851">
+        <ele>31.0</ele>
+        <name>WP0074</name>
+      </trkpt>
+      <trkpt lat="53.557056" lon="-3.060394">
+        <ele>30.8</ele>
+        <name>WP0075</name>
+      </trkpt>
+      <trkpt lat="53.557672" lon="-3.058910">
+        <ele>31.0</ele>
+        <name>WP0076</name>
+      </trkpt>
+      <trkpt lat="53.557845" lon="-3.056619">
+        <ele>31.0</ele>
+        <name>WP0077</name>
+      </trkpt>
+      <trkpt lat="53.559227" lon="-3.056754">
+        <ele>30.4</ele>
+        <name>WP0078</name>
+      </trkpt>
+      <trkpt lat="53.559024" lon="-3.053057">
+        <ele>30.8</ele>
+        <name>WP0079</name>
+      </trkpt>
+      <trkpt lat="53.560660" lon="-3.052770">
+        <ele>30.2</ele>
+        <name>WP0080</name>
+      </trkpt>
+      <trkpt lat="53.562066" lon="-3.051168">
+        <ele>30.6</ele>
+        <name>WP0081</name>
+      </trkpt>
+      <trkpt lat="53.563154" lon="-3.049311">
+        <ele>30.4</ele>
+        <name>WP0082</name>
+      </trkpt>
+      <trkpt lat="53.563121" lon="-3.046554">
+        <ele>30.0</ele>
+        <name>WP0083</name>
+      </trkpt>
+      <trkpt lat="53.563287" lon="-3.046295">
+        <ele>30.6</ele>
+        <name>WP0084</name>
+      </trkpt>
+      <trkpt lat="53.562922" lon="-3.046240">
+        <ele>31.0</ele>
+        <name>WP0085</name>
+      </trkpt>
+      <trkpt lat="53.563101" lon="-3.045762">
+        <ele>29.6</ele>
+        <name>WP0086</name>
+      </trkpt>
+      <trkpt lat="53.562990" lon="-3.043827">
+        <ele>30.0</ele>
+        <name>WP0087</name>
+      </trkpt>
+      <trkpt lat="53.562372" lon="-3.040703">
+        <ele>31.4</ele>
+        <name>WP0088</name>
+      </trkpt>
+      <trkpt lat="53.562325" lon="-3.037928">
+        <ele>29.0</ele>
+        <name>WP0089</name>
+      </trkpt>
+      <trkpt lat="53.564755" lon="-3.030913">
+        <ele>29.6</ele>
+        <name>WP0090</name>
+      </trkpt>
+      <trkpt lat="53.565567" lon="-3.021417">
+        <ele>30.0</ele>
+        <name>WP0091</name>
+      </trkpt>
+      <trkpt lat="53.569413" lon="-3.007602">
+        <ele>28.2</ele>
+        <name>WP0092</name>
+      </trkpt>
+      <trkpt lat="53.569263" lon="-3.007177">
+        <ele>26.8</ele>
+        <name>WP0093</name>
+      </trkpt>
+      <trkpt lat="53.567937" lon="-3.006011">
+        <ele>27.4</ele>
+        <name>WP0094</name>
+      </trkpt>
+      <trkpt lat="53.566740" lon="-3.003594">
+        <ele>27.6</ele>
+        <name>WP0095</name>
+      </trkpt>
+      <trkpt lat="53.565932" lon="-2.999293">
+        <ele>28.4</ele>
+        <name>WP0096</name>
+      </trkpt>
+      <trkpt lat="53.566081" lon="-2.996585">
+        <ele>29.6</ele>
+        <name>WP0097</name>
+      </trkpt>
+      <trkpt lat="53.565552" lon="-2.993533">
+        <ele>30.2</ele>
+        <name>WP0098</name>
+      </trkpt>
+      <trkpt lat="53.565137" lon="-2.992462">
+        <ele>33.8</ele>
+        <name>WP0099</name>
+      </trkpt>
+      <trkpt lat="53.562499" lon="-2.987625">
+        <ele>30.4</ele>
+        <name>WP0100</name>
+      </trkpt>
+      <trkpt lat="53.563859" lon="-2.983076">
+        <ele>31.6</ele>
+        <name>WP0101</name>
+      </trkpt>
+      <trkpt lat="53.564419" lon="-2.980005">
+        <ele>33.2</ele>
+        <name>WP0102</name>
+      </trkpt>
+      <trkpt lat="53.564519" lon="-2.978862">
+        <ele>34.2</ele>
+        <name>WP0103</name>
+      </trkpt>
+      <trkpt lat="53.564044" lon="-2.976304">
+        <ele>36.0</ele>
+        <name>WP0104</name>
+      </trkpt>
+      <trkpt lat="53.564987" lon="-2.970773">
+        <ele>38.2</ele>
+        <name>WP0105</name>
+      </trkpt>
+      <trkpt lat="53.564907" lon="-2.969651">
+        <ele>39.4</ele>
+        <name>WP0106</name>
+      </trkpt>
+      <trkpt lat="53.565645" lon="-2.969175">
+        <ele>39.0</ele>
+        <name>WP0107</name>
+      </trkpt>
+      <trkpt lat="53.565838" lon="-2.968714">
+        <ele>39.4</ele>
+        <name>WP0108</name>
+      </trkpt>
+      <trkpt lat="53.565404" lon="-2.963945">
+        <ele>40.4</ele>
+        <name>WP0109</name>
+      </trkpt>
+      <trkpt lat="53.566208" lon="-2.961922">
+        <ele>40.4</ele>
+        <name>WP0110</name>
+      </trkpt>
+      <trkpt lat="53.566297" lon="-2.960978">
+        <ele>41.0</ele>
+        <name>WP0111</name>
+      </trkpt>
+      <trkpt lat="53.566135" lon="-2.959008">
+        <ele>39.8</ele>
+        <name>WP0112</name>
+      </trkpt>
+      <trkpt lat="53.565589" lon="-2.957619">
+        <ele>42.0</ele>
+        <name>WP0113</name>
+      </trkpt>
+      <trkpt lat="53.563579" lon="-2.957307">
+        <ele>41.4</ele>
+        <name>WP0114</name>
+      </trkpt>
+      <trkpt lat="53.563047" lon="-2.956795">
+        <ele>44.0</ele>
+        <name>WP0115</name>
+      </trkpt>
+      <trkpt lat="53.562550" lon="-2.955132">
+        <ele>42.6</ele>
+        <name>WP0116</name>
+      </trkpt>
+      <trkpt lat="53.561308" lon="-2.952848">
+        <ele>43.6</ele>
+        <name>WP0117</name>
+      </trkpt>
+      <trkpt lat="53.561638" lon="-2.951288">
+        <ele>44.4</ele>
+        <name>WP0118</name>
+      </trkpt>
+      <trkpt lat="53.561575" lon="-2.950936">
+        <ele>44.0</ele>
+        <name>WP0119</name>
+      </trkpt>
+      <trkpt lat="53.560708" lon="-2.949344">
+        <ele>44.8</ele>
+        <name>WP0120</name>
+      </trkpt>
+      <trkpt lat="53.559975" lon="-2.949441">
+        <ele>43.0</ele>
+        <name>WP0121</name>
+      </trkpt>
+      <trkpt lat="53.558638" lon="-2.946602">
+        <ele>44.4</ele>
+        <name>WP0122</name>
+      </trkpt>
+      <trkpt lat="53.561367" lon="-2.942448">
+        <ele>45.6</ele>
+        <name>WP0123</name>
+      </trkpt>
+      <trkpt lat="53.562438" lon="-2.941589">
+        <ele>45.8</ele>
+        <name>WP0124</name>
+      </trkpt>
+      <trkpt lat="53.564885" lon="-2.942705">
+        <ele>45.8</ele>
+        <name>WP0125</name>
+      </trkpt>
+      <trkpt lat="53.566516" lon="-2.941589">
+        <ele>46.0</ele>
+        <name>WP0126</name>
+      </trkpt>
+      <trkpt lat="53.566644" lon="-2.939916">
+        <ele>49.8</ele>
+        <name>WP0127</name>
+      </trkpt>
+      <trkpt lat="53.565802" lon="-2.938457">
+        <ele>51.0</ele>
+        <name>WP0128</name>
+      </trkpt>
+      <trkpt lat="53.565751" lon="-2.936225">
+        <ele>51.0</ele>
+        <name>WP0129</name>
+      </trkpt>
+      <trkpt lat="53.565828" lon="-2.934380">
+        <ele>55.8</ele>
+        <name>WP0130</name>
+      </trkpt>
+      <trkpt lat="53.565650" lon="-2.931890">
+        <ele>59.0</ele>
+        <name>WP0131</name>
+      </trkpt>
+      <trkpt lat="53.564808" lon="-2.929316">
+        <ele>64.2</ele>
+        <name>WP0132</name>
+      </trkpt>
+      <trkpt lat="53.564918" lon="-2.929321">
+        <ele>69.2</ele>
+        <name>WP0133</name>
+      </trkpt>
+      <trkpt lat="53.567189" lon="-2.930034">
+        <ele>69.0</ele>
+        <name>WP0134</name>
+      </trkpt>
+      <trkpt lat="53.568839" lon="-2.929193">
+        <ele>58.4</ele>
+        <name>WP0135</name>
+      </trkpt>
+      <trkpt lat="53.571420" lon="-2.930357">
+        <ele>48.0</ele>
+        <name>WP0136</name>
+      </trkpt>
+      <trkpt lat="53.574117" lon="-2.936397">
+        <ele>39.8</ele>
+        <name>WP0137</name>
+      </trkpt>
+      <trkpt lat="53.575734" lon="-2.938938">
+        <ele>37.6</ele>
+        <name>WP0138</name>
+      </trkpt>
+      <trkpt lat="53.576430" lon="-2.941515">
+        <ele>35.6</ele>
+        <name>WP0139</name>
+      </trkpt>
+      <trkpt lat="53.577869" lon="-2.941048">
+        <ele>35.6</ele>
+        <name>WP0140</name>
+      </trkpt>
+      <trkpt lat="53.578665" lon="-2.941165">
+        <ele>35.6</ele>
+        <name>WP0141</name>
+      </trkpt>
+      <trkpt lat="53.579414" lon="-2.940194">
+        <ele>35.8</ele>
+        <name>WP0142</name>
+      </trkpt>
+      <trkpt lat="53.581366" lon="-2.944845">
+        <ele>35.4</ele>
+        <name>WP0143</name>
+      </trkpt>
+      <trkpt lat="53.581952" lon="-2.945712">
+        <ele>37.0</ele>
+        <name>WP0144</name>
+      </trkpt>
+      <trkpt lat="53.582769" lon="-2.946210">
+        <ele>34.0</ele>
+        <name>WP0145</name>
+      </trkpt>
+      <trkpt lat="53.583849" lon="-2.947738">
+        <ele>34.4</ele>
+        <name>WP0146</name>
+      </trkpt>
+      <trkpt lat="53.585067" lon="-2.951340">
+        <ele>33.6</ele>
+        <name>WP0147</name>
+      </trkpt>
+      <trkpt lat="53.584993" lon="-2.953285">
+        <ele>32.8</ele>
+        <name>WP0148</name>
+      </trkpt>
+      <trkpt lat="53.584275" lon="-2.954548">
+        <ele>32.0</ele>
+        <name>WP0149</name>
+      </trkpt>
+      <trkpt lat="53.582962" lon="-2.956058">
+        <ele>32.2</ele>
+        <name>WP0150</name>
+      </trkpt>
+      <trkpt lat="53.582147" lon="-2.960509">
+        <ele>32.2</ele>
+        <name>WP0151</name>
+      </trkpt>
+      <trkpt lat="53.583916" lon="-2.964854">
+        <ele>31.6</ele>
+        <name>WP0152</name>
+      </trkpt>
+      <trkpt lat="53.585608" lon="-2.970644">
+        <ele>25.4</ele>
+        <name>WP0153</name>
+      </trkpt>
+      <trkpt lat="53.585698" lon="-2.971309">
+        <ele>24.8</ele>
+        <name>WP0154</name>
+      </trkpt>
+      <trkpt lat="53.585586" lon="-2.977495">
+        <ele>24.8</ele>
+        <name>WP0155</name>
+      </trkpt>
+      <trkpt lat="53.585683" lon="-2.979233">
+        <ele>24.8</ele>
+        <name>WP0156</name>
+      </trkpt>
+      <trkpt lat="53.586028" lon="-2.981170">
+        <ele>23.8</ele>
+        <name>WP0157</name>
+      </trkpt>
+      <trkpt lat="53.588952" lon="-2.986763">
+        <ele>22.4</ele>
+        <name>WP0158</name>
+      </trkpt>
+      <trkpt lat="53.590380" lon="-2.990876">
+        <ele>21.6</ele>
+        <name>WP0159</name>
+      </trkpt>
+      <trkpt lat="53.592357" lon="-2.995190">
+        <ele>22.2</ele>
+        <name>WP0160</name>
+      </trkpt>
+      <trkpt lat="53.596511" lon="-2.996720">
+        <ele>21.0</ele>
+        <name>WP0161</name>
+      </trkpt>
+      <trkpt lat="53.597093" lon="-2.998933">
+        <ele>20.0</ele>
+        <name>WP0162</name>
+      </trkpt>
+      <trkpt lat="53.597819" lon="-3.010322">
+        <ele>21.2</ele>
+        <name>WP0163</name>
+      </trkpt>
+      <trkpt lat="53.598642" lon="-3.014951">
+        <ele>20.8</ele>
+        <name>WP0164</name>
+      </trkpt>
+      <trkpt lat="53.599255" lon="-3.019696">
+        <ele>20.6</ele>
+        <name>WP0165</name>
+      </trkpt>
+      <trkpt lat="53.600065" lon="-3.023978">
+        <ele>21.6</ele>
+        <name>WP0166</name>
+      </trkpt>
+      <trkpt lat="53.601933" lon="-3.028898">
+        <ele>23.6</ele>
+        <name>WP0167</name>
+      </trkpt>
+      <trkpt lat="53.603253" lon="-3.031335">
+        <ele>27.8</ele>
+        <name>WP0168</name>
+      </trkpt>
+      <trkpt lat="53.602953" lon="-3.034002">
+        <ele>12.0</ele>
+        <name>WP0169</name>
+      </trkpt>
+      <trkpt lat="53.602574" lon="-3.035354">
+        <ele>12.0</ele>
+        <name>WP0170</name>
+      </trkpt>
+      <trkpt lat="53.602170" lon="-3.038439">
+        <ele>13.0</ele>
+        <name>WP0171</name>
+      </trkpt>
+      <trkpt lat="53.602030" lon="-3.040563">
+        <ele>13.0</ele>
+        <name>WP0172</name>
+      </trkpt>
+      <trkpt lat="53.602189" lon="-3.042129">
+        <ele>13.0</ele>
+        <name>WP0173</name>
+      </trkpt>
+      <trkpt lat="53.599764" lon="-3.044447">
+        <ele>14.0</ele>
+        <name>WP0174</name>
+      </trkpt>
+      <trkpt lat="53.599356" lon="-3.043149">
+        <ele>12.0</ele>
+        <name>WP0175</name>
+      </trkpt>
+      <trkpt lat="53.599254" lon="-3.041518">
+        <ele>12.0</ele>
+        <name>WP0176</name>
+      </trkpt>
+      <trkpt lat="53.598573" lon="-3.039554">
+        <ele>11.0</ele>
+        <name>WP0177</name>
+      </trkpt>
+      <trkpt lat="53.597745" lon="-3.039951">
+        <ele>10.0</ele>
+        <name>WP0178</name>
+      </trkpt>
+      <trkpt lat="53.597280" lon="-3.037387">
+        <ele>9.0</ele>
+        <name>WP0179</name>
+      </trkpt>
+      <trkpt lat="53.596917" lon="-3.036325">
+        <ele>9.0</ele>
+        <name>WP0180</name>
+      </trkpt>
+      <trkpt lat="53.594450" lon="-3.038646">
+        <ele>27.6</ele>
+        <name>WP0181</name>
+      </trkpt>
+      <trkpt lat="53.593976" lon="-3.038864">
+        <ele>27.4</ele>
+        <name>WP0182</name>
+      </trkpt>
+      <trkpt lat="53.590794" lon="-3.039059">
+        <ele>27.2</ele>
+        <name>WP0183</name>
+      </trkpt>
+      <trkpt lat="53.587276" lon="-3.041016">
+        <ele>26.4</ele>
+        <name>WP0184</name>
+      </trkpt>
+      <trkpt lat="53.585604" lon="-3.043589">
+        <ele>27.6</ele>
+        <name>WP0185</name>
+      </trkpt>
+      <trkpt lat="53.580695" lon="-3.048768">
+        <ele>27.2</ele>
+        <name>WP0186</name>
+      </trkpt>
+      <trkpt lat="53.578604" lon="-3.050382">
+        <ele>27.4</ele>
+        <name>WP0187</name>
+      </trkpt>
+      <trkpt lat="53.577027" lon="-3.051028">
+        <ele>26.2</ele>
+        <name>WP0188</name>
+      </trkpt>
+      <trkpt lat="53.575197" lon="-3.051266">
+        <ele>25.8</ele>
+        <name>WP0189</name>
+      </trkpt>
+      <trkpt lat="53.573595" lon="-3.051023">
+        <ele>24.4</ele>
+        <name>WP0190</name>
+      </trkpt>
+      <trkpt lat="53.571933" lon="-3.050285">
+        <ele>25.2</ele>
+        <name>WP0191</name>
+      </trkpt>
+      <trkpt lat="53.571703" lon="-3.050973">
+        <ele>24.6</ele>
+        <name>WP0192</name>
+      </trkpt>
+      <trkpt lat="53.571305" lon="-3.051035">
+        <ele>24.0</ele>
+        <name>WP0193</name>
+      </trkpt>
+      <trkpt lat="53.569961" lon="-3.056734">
+        <ele>24.4</ele>
+        <name>WP0194</name>
+      </trkpt>
+      <trkpt lat="53.569983" lon="-3.057035">
+        <ele>24.4</ele>
+        <name>WP0195</name>
+      </trkpt>
+      <trkpt lat="53.570561" lon="-3.057572">
+        <ele>24.6</ele>
+        <name>WP0196</name>
+      </trkpt>
+      <trkpt lat="53.570347" lon="-3.058654">
+        <ele>24.8</ele>
+        <name>WP0197</name>
+      </trkpt>
+      <trkpt lat="53.570543" lon="-3.059025">
+        <ele>25.2</ele>
+        <name>WP0198</name>
+      </trkpt>
+      <trkpt lat="53.569814" lon="-3.064304">
+        <ele>25.0</ele>
+        <name>WP0199</name>
+      </trkpt>
+      <trkpt lat="53.568829" lon="-3.064066">
+        <ele>25.6</ele>
+        <name>WP0200</name>
+      </trkpt>
+      <trkpt lat="53.568630" lon="-3.066432">
+        <ele>25.0</ele>
+        <name>WP0201</name>
+      </trkpt>
+      <trkpt lat="53.568413" lon="-3.067443">
+        <ele>25.6</ele>
+        <name>WP0202</name>
+      </trkpt>
+      <trkpt lat="53.568068" lon="-3.067523">
+        <ele>25.2</ele>
+        <name>WP0203</name>
+      </trkpt>
+      <trkpt lat="53.566815" lon="-3.067061">
+        <ele>25.4</ele>
+        <name>WP0204</name>
+      </trkpt>
+      <trkpt lat="53.564779" lon="-3.065281">
+        <ele>25.6</ele>
+        <name>WP0205</name>
+      </trkpt>
+      <trkpt lat="53.563772" lon="-3.070406">
+        <ele>25.2</ele>
+        <name>WP0206</name>
+      </trkpt>
+      <trkpt lat="53.557884" lon="-3.068555">
+        <ele>24.8</ele>
+        <name>WP0207</name>
+      </trkpt>
+      <trkpt lat="53.554579" lon="-3.068527">
+        <ele>25.6</ele>
+        <name>WP0208</name>
+      </trkpt>
+      <trkpt lat="53.553670" lon="-3.068060">
+        <ele>25.6</ele>
+        <name>WP0209</name>
+      </trkpt>
+      <trkpt lat="53.552989" lon="-3.073768">
+        <ele>24.8</ele>
+        <name>WP0210</name>
+      </trkpt>
+      <trkpt lat="53.553060" lon="-3.071106">
+        <ele>24.4</ele>
+        <name>WP0211</name>
+      </trkpt>
+      <trkpt lat="53.551166" lon="-3.070935">
+        <ele>25.2</ele>
+        <name>WP0212</name>
+      </trkpt>
+      <trkpt lat="53.549475" lon="-3.071327">
+        <ele>24.6</ele>
+        <name>WP0213</name>
+      </trkpt>
+      <trkpt lat="53.547111" lon="-3.070961">
+        <ele>23.2</ele>
+        <name>WP0214</name>
+      </trkpt>
+      <trkpt lat="53.545621" lon="-3.071108">
+        <ele>22.6</ele>
+        <name>WP0215</name>
+      </trkpt>
+      <trkpt lat="53.545076" lon="-3.070936">
+        <ele>6.0</ele>
+        <name>WP0216</name>
+      </trkpt>
+      <trkpt lat="53.543597" lon="-3.069499">
+        <ele>3.0</ele>
+        <name>WP0217</name>
+      </trkpt>
+      <trkpt lat="53.543533" lon="-3.068812">
+        <ele>3.0</ele>
+        <name>WP0218</name>
+      </trkpt>
+      <trkpt lat="53.544082" lon="-3.067632">
+        <ele>3.0</ele>
+        <name>WP0219</name>
+      </trkpt>
+      <trkpt lat="53.543584" lon="-3.067009">
+        <ele>5.0</ele>
+        <name>WP0220</name>
+      </trkpt>
+      <trkpt lat="53.532286" lon="-3.060540">
+        <ele>4.0</ele>
+        <name>WP0221</name>
+      </trkpt>
+      <trkpt lat="53.528313" lon="-3.058469">
+        <ele>7.0</ele>
+        <name>WP0222</name>
+      </trkpt>
+      <trkpt lat="53.525685" lon="-3.057536">
+        <ele>7.0</ele>
+        <name>WP0223</name>
+      </trkpt>
+      <trkpt lat="53.524856" lon="-3.057429">
+        <ele>9.0</ele>
+        <name>WP0224</name>
+      </trkpt>
+      <trkpt lat="53.524786" lon="-3.058201">
+        <ele>8.0</ele>
+        <name>WP0225</name>
+      </trkpt>
+      <trkpt lat="53.523759" lon="-3.057965">
+        <ele>9.0</ele>
+        <name>WP0226</name>
+      </trkpt>
+      <trkpt lat="53.523211" lon="-3.058137">
+        <ele>8.0</ele>
+        <name>WP0227</name>
+      </trkpt>
+      <trkpt lat="53.521450" lon="-3.057740">
+        <ele>10.0</ele>
+        <name>WP0228</name>
+      </trkpt>
+      <trkpt lat="53.521195" lon="-3.057193">
+        <ele>9.0</ele>
+        <name>WP0229</name>
+      </trkpt>
+      <trkpt lat="53.520621" lon="-3.056989">
+        <ele>8.0</ele>
+        <name>WP0230</name>
+      </trkpt>
+      <trkpt lat="53.519945" lon="-3.056999">
+        <ele>9.0</ele>
+        <name>WP0231</name>
+      </trkpt>
+      <trkpt lat="53.519173" lon="-3.057311">
+        <ele>9.0</ele>
+        <name>WP0232</name>
+      </trkpt>
+      <trkpt lat="53.515594" lon="-3.057632">
+        <ele>8.0</ele>
+        <name>WP0233</name>
+      </trkpt>
+      <trkpt lat="53.514523" lon="-3.058223">
+        <ele>8.0</ele>
+        <name>WP0234</name>
+      </trkpt>
+      <trkpt lat="53.514165" lon="-3.058791">
+        <ele>8.0</ele>
+        <name>WP0235</name>
+      </trkpt>
+      <trkpt lat="53.513081" lon="-3.058813">
+        <ele>7.0</ele>
+        <name>WP0236</name>
+      </trkpt>
+      <trkpt lat="53.512475" lon="-3.058534">
+        <ele>8.0</ele>
+        <name>WP0237</name>
+      </trkpt>
+      <trkpt lat="53.512379" lon="-3.060282">
+        <ele>8.0</ele>
+        <name>WP0238</name>
+      </trkpt>
+      <trkpt lat="53.512660" lon="-3.062160">
+        <ele>7.0</ele>
+        <name>WP0239</name>
+      </trkpt>
+      <trkpt lat="53.512232" lon="-3.062890">
+        <ele>3.0</ele>
+        <name>WP0240</name>
+      </trkpt>
+      <trkpt lat="53.510937" lon="-3.062278">
+        <ele>8.0</ele>
+        <name>WP0241</name>
+      </trkpt>
+      <trkpt lat="53.509891" lon="-3.062375">
+        <ele>7.0</ele>
+        <name>WP0242</name>
+      </trkpt>
+      <trkpt lat="53.508321" lon="-3.061924">
+        <ele>4.0</ele>
+        <name>WP0243</name>
+      </trkpt>
+      <trkpt lat="53.507281" lon="-3.061870">
+        <ele>3.0</ele>
+        <name>WP0244</name>
+      </trkpt>
+      <trkpt lat="53.506458" lon="-3.062214">
+        <ele>5.0</ele>
+        <name>WP0245</name>
+      </trkpt>
+      <trkpt lat="53.500115" lon="-3.059886">
+        <ele>7.0</ele>
+        <name>WP0246</name>
+      </trkpt>
+      <trkpt lat="53.499694" lon="-3.059371">
+        <ele>5.0</ele>
+        <name>WP0247</name>
+      </trkpt>
+      <trkpt lat="53.497933" lon="-3.058609">
+        <ele>7.0</ele>
+        <name>WP0248</name>
+      </trkpt>
+      <trkpt lat="53.497613" lon="-3.058748">
+        <ele>7.0</ele>
+        <name>WP0249</name>
+      </trkpt>
+      <trkpt lat="53.496669" lon="-3.058394">
+        <ele>6.0</ele>
+        <name>WP0250</name>
+      </trkpt>
+      <trkpt lat="53.496745" lon="-3.057654">
+        <ele>6.0</ele>
+        <name>WP0251</name>
+      </trkpt>
+      <trkpt lat="53.496637" lon="-3.056989">
+        <ele>9.0</ele>
+        <name>WP0252</name>
+      </trkpt>
+      <trkpt lat="53.492278" lon="-3.054188">
+        <ele>8.0</ele>
+        <name>WP0253</name>
+      </trkpt>
+      <trkpt lat="53.491550" lon="-3.054199">
+        <ele>8.0</ele>
+        <name>WP0254</name>
+      </trkpt>
+      <trkpt lat="53.490669" lon="-3.053641">
+        <ele>8.0</ele>
+        <name>WP0255</name>
+      </trkpt>
+      <trkpt lat="53.489858" lon="-3.052568">
+        <ele>8.0</ele>
+        <name>WP0256</name>
+      </trkpt>
+      <trkpt lat="53.489361" lon="-3.051420">
+        <ele>9.0</ele>
+        <name>WP0257</name>
+      </trkpt>
+      <trkpt lat="53.484981" lon="-3.046228">
+        <ele>9.0</ele>
+        <name>WP0258</name>
+      </trkpt>
+      <trkpt lat="53.484854" lon="-3.046474">
+        <ele>9.0</ele>
+        <name>WP0259</name>
+      </trkpt>
+      <trkpt lat="53.482855" lon="-3.044297">
+        <ele>9.0</ele>
+        <name>WP0260</name>
+      </trkpt>
+      <trkpt lat="53.482211" lon="-3.045756">
+        <ele>7.0</ele>
+        <name>WP0261</name>
+      </trkpt>
+      <trkpt lat="53.481872" lon="-3.045809">
+        <ele>7.0</ele>
+        <name>WP0262</name>
+      </trkpt>
+      <trkpt lat="53.481438" lon="-3.045058">
+        <ele>7.0</ele>
+        <name>WP0263</name>
+      </trkpt>
+      <trkpt lat="53.481744" lon="-3.044082">
+        <ele>9.0</ele>
+        <name>WP0264</name>
+      </trkpt>
+      <trkpt lat="53.480353" lon="-3.042537">
+        <ele>7.0</ele>
+        <name>WP0265</name>
+      </trkpt>
+      <trkpt lat="53.479957" lon="-3.041604">
+        <ele>7.0</ele>
+        <name>WP0266</name>
+      </trkpt>
+      <trkpt lat="53.477831" lon="-3.038664">
+        <ele>9.0</ele>
+        <name>WP0267</name>
+      </trkpt>
+      <trkpt lat="53.477192" lon="-3.037602">
+        <ele>6.0</ele>
+        <name>WP0268</name>
+      </trkpt>
+      <trkpt lat="53.477141" lon="-3.037194">
+        <ele>7.0</ele>
+        <name>WP0269</name>
+      </trkpt>
+      <trkpt lat="53.477313" lon="-3.036851">
+        <ele>7.0</ele>
+        <name>WP0270</name>
+      </trkpt>
+      <trkpt lat="53.476151" lon="-3.034544">
+        <ele>11.0</ele>
+        <name>WP0271</name>
+      </trkpt>
+      <trkpt lat="53.473048" lon="-3.030038">
+        <ele>7.0</ele>
+        <name>WP0272</name>
+      </trkpt>
+      <trkpt lat="53.475890" lon="-3.023708">
+        <ele>13.0</ele>
+        <name>WP0273</name>
+      </trkpt>
+      <trkpt lat="53.476745" lon="-3.024770">
+        <ele>14.0</ele>
+        <name>WP0274</name>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>`;
+
   // =========================================================================
   // XML Helpers & 2-Space Formatter
   // =========================================================================
@@ -627,6 +1737,13 @@
       } else if (opts.removeMetadata && name === 'metadata') {
         toRemove.push(el);
       } else if (opts.removeEle && name === 'ele') {
+        toRemove.push(el);
+      } else if (
+        opts.removePtName &&
+        name === 'name' &&
+        el.parentNode &&
+        (localName(el.parentNode) === 'trkpt' || localName(el.parentNode) === 'rtept')
+      ) {
         toRemove.push(el);
       }
     }
@@ -1804,6 +2921,7 @@
     const chkRemoveNonEssential = document.getElementById('chk-remove-nonessential');
     const chkRemoveMetadata = document.getElementById('chk-remove-metadata');
     const chkRemoveEle = document.getElementById('chk-remove-ele');
+    const chkRemovePtName = document.getElementById('chk-remove-pt-name');
     const btnCleanTags = document.getElementById('btn-clean-tags');
     const btnFormatXml = document.getElementById('btn-format-xml');
 
@@ -1811,6 +2929,7 @@
     const btnJoinSegments = document.getElementById('btn-join-segments');
     const btnTrkToRte = document.getElementById('btn-trk-to-rte');
     const btnRteToTrk = document.getElementById('btn-rte-to-trk');
+    const simplifyToleranceInput = document.getElementById('simplify-tolerance-input');
     const btnSimplifyDp = document.getElementById('btn-simplify-dp');
 
     const btnUpdateWpNames = document.getElementById('btn-update-wp-names');
@@ -2021,30 +3140,28 @@
       applyEditorChange('', 'Editor cleared.', true);
     });
 
-    btnSample.addEventListener('click', function () {
-      const sampleXml =
-        '<?xml version="1.0" encoding="UTF-8"?>\n' +
-        '<gpx version="1.1" creator="ThirdPartyPlanner" xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1">\n' +
-        '  <metadata>\n' +
-        '    <name>Sample Ridge Loop</name>\n' +
-        '    <time>2026-06-01T08:00:00Z</time>\n' +
-        '  </metadata>\n' +
-        '  <trk>\n' +
-        '    <name>Sample Ridge Route</name>\n' +
-        '    <trkseg>\n' +
-        '      <trkpt lat="53.61000" lon="-2.81000"><ele>110</ele><time>2026-06-01T08:00:00Z</time><extensions><gpxtpx:TrackPointExtension><gpxtpx:hr>132</gpxtpx:hr></gpxtpx:TrackPointExtension></extensions></trkpt>\n' +
-        '      <trkpt lat="53.62000" lon="-2.82000"><ele>140</ele><time>2026-06-01T08:03:00Z</time></trkpt>\n' +
-        '      <trkpt lat="53.63000" lon="-2.83000"><ele>170</ele><time>2026-06-01T08:07:00Z</time><name>OldName</name></trkpt>\n' +
-        '    </trkseg>\n' +
-        '    <trkseg>\n' +
-        '      <trkpt lat="53.64000" lon="-2.84000"><ele>200</ele><time>2026-06-01T08:12:00Z</time></trkpt>\n' +
-        '      <trkpt lat="53.65000" lon="-2.85000"><ele>230</ele><time>2026-06-01T08:18:00Z</time></trkpt>\n' +
-        '      <trkpt lat="53.66000" lon="-2.86000"><ele>260</ele><time>2026-06-01T08:25:00Z</time></trkpt>\n' +
-        '    </trkseg>\n' +
-        '  </trk>\n' +
-        '</gpx>\n';
-      currentFileName = 'sample_ridge_loop.gpx';
-      applyEditorChange(sampleXml, 'Loaded sample GPX with 2 track segments, <time>, and <extensions>.', true);
+    btnSample.addEventListener('click', async function () {
+      let xmlText = SAMPLE_GPX_XML;
+      if (
+        typeof fetch === 'function' &&
+        typeof window !== 'undefined' &&
+        window.location &&
+        /^https?:$/i.test(window.location.protocol)
+      ) {
+        try {
+          const resp = await fetch('Cycle%20on%20the%20Moss.gpx');
+          if (resp && resp.ok) {
+            const fetched = await resp.text();
+            if (fetched && fetched.trim()) {
+              xmlText = fetched;
+            }
+          }
+        } catch (_err) {
+          // Fall back to embedded SAMPLE_GPX_XML
+        }
+      }
+      currentFileName = 'Cycle on the Moss.gpx';
+      applyEditorChange(xmlText, 'Loaded sample "Cycle on the Moss.gpx".', true);
     });
 
     // File Loading (.gpx, .kml, .fit, .xml)
@@ -2201,7 +3318,8 @@
           removeTime: chkRemoveTime.checked,
           removeNonEssential: chkRemoveNonEssential.checked,
           removeMetadata: chkRemoveMetadata.checked,
-          removeEle: chkRemoveEle.checked
+          removeEle: chkRemoveEle.checked,
+          removePtName: chkRemovePtName ? chkRemovePtName.checked : false
         });
         return {
           xml: res.xml,
@@ -2337,11 +3455,17 @@
 
     btnSimplifyDp.addEventListener('click', function () {
       runTransform(function (doc) {
-        const res = simplifyTracksAndRoutes(doc, 10);
+        const tol = parseFloat(simplifyToleranceInput.value);
+        if (!Number.isFinite(tol) || tol <= 0) {
+          throw new Error('Enter a valid tolerance in meters greater than 0 (e.g. 10).');
+        }
+        const res = simplifyTracksAndRoutes(doc, tol);
         return {
           xml: res.xml,
           message:
-            'Simplified ' +
+            'Simplified (tolerance ' +
+            tol +
+            'm): ' +
             res.totalBefore.toLocaleString() +
             ' → ' +
             res.totalAfter.toLocaleString() +
@@ -2507,7 +3631,8 @@
       parseCombinedLatLon,
       parseSourcePointSnippet,
       buildWaypointXmlString,
-      insertWaypointIntoMainGpx
+      insertWaypointIntoMainGpx,
+      SAMPLE_GPX_XML
     };
   }
 })();

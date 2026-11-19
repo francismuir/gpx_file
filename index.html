@@ -105,6 +105,10 @@
                 <input type="checkbox" id="chk-remove-ele">
                 <span>Remove <code>&lt;ele&gt;</code> (elevation)</span>
               </label>
+              <label class="checkbox-row">
+                <input type="checkbox" id="chk-remove-pt-name">
+                <span>Remove <code>&lt;name&gt;</code> from <code>&lt;trkpt&gt;</code> &amp; <code>&lt;rtept&gt;</code></span>
+              </label>
             </div>
             <div class="op-actions">
               <button type="button" id="btn-clean-tags" class="btn btn-secondary btn-full">
@@ -176,21 +180,45 @@
             <div class="op-divider"></div>
 
             <div class="field-group">
-              <span class="field-label">Keep only from Start and/or End point</span>
-              <div class="inline-row">
-                <input type="text" id="trim-start-input" class="input-control" placeholder="Start (e.g. 12)" aria-label="New start point">
-                <input type="text" id="trim-end-input" class="input-control" placeholder="End (e.g. 240)" aria-label="New end point">
-              </div>
-              <button type="button" id="btn-trim-points" class="btn btn-secondary btn-full">
-                Trim Outside Start / End
-              </button>
+              <label for="trim-start-input" class="field-label">Remove all points BEFORE point # (optional)</label>
+              <input
+                type="text"
+                id="trim-start-input"
+                class="input-control"
+                placeholder="e.g. 12 (removes 1–11, keeps 12 onward)"
+              >
             </div>
+
+            <div class="field-group">
+              <label for="trim-end-input" class="field-label">Remove all points AFTER point # (optional)</label>
+              <input
+                type="text"
+                id="trim-end-input"
+                class="input-control"
+                placeholder="e.g. 240 (keeps up to 240, removes 241+)"
+              >
+            </div>
+
+            <button type="button" id="btn-trim-points" class="btn btn-secondary btn-full">
+              Remove Points Before / After
+            </button>
           </div>
 
           <!-- 5. Simplify Track / Route -->
           <div class="op-card">
             <h2 class="op-title">5. Simplify Track / Route</h2>
-            <p class="op-hint">Removes non-essential points from tracks and routes using the Douglas-Peucker algorithm (10m default tolerance).</p>
+            <p class="op-hint">Removes non-essential points from tracks and routes using the Douglas-Peucker algorithm.</p>
+            <div class="field-group">
+              <label for="simplify-tolerance-input" class="field-label">Tolerance (meters)</label>
+              <input
+                type="number"
+                id="simplify-tolerance-input"
+                class="input-control"
+                value="10"
+                min="0.1"
+                step="1"
+              >
+            </div>
             <div class="op-actions">
               <button type="button" id="btn-simplify-dp" class="btn btn-secondary btn-full">
                 Simplify (Douglas-Peucker)
